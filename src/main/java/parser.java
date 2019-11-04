@@ -15,12 +15,16 @@ import java.util.stream.Collectors;
 
 
 public class parser {
-
+        //let the json file we get from filesystem
     private static Path testPath = Paths.get("./src/main/resources/response.json");
     private static ObjectMapper objectMapper = new ObjectMapper();
     private static List<DocumentInfo> docList = new ArrayList<>();
 
 
+    /**
+     *
+     * @return List Of objects form JSON file - Objects blob.
+     */
     private static List<Object> getData() {
 
         String content = "";
@@ -34,6 +38,11 @@ public class parser {
         return JsonObject.getJSONObject("payload").getJSONArray("items").toList();
     }
 
+
+    /**
+     *
+     * @return  Tre Map with unic statuses & count of them
+     */
     public static Map getStatuses() {
         ArrayList<String> statuses = new ArrayList();
         getData().forEach(docum ->
@@ -42,6 +51,11 @@ public class parser {
     }
 
 
+    /**
+     *
+     * @param filename
+     * @return JSON string with all data by filename
+     */
     public static String getDataByFileName(String filename) {
 
         String result = null;
@@ -59,6 +73,11 @@ public class parser {
 
     }
 
+    /**
+     *
+     * @param status
+     * @return Hash Based Table (Guava)
+     */
     public static Table getDataByStatus(String status) {
 
 
@@ -73,7 +92,9 @@ public class parser {
 
 
         for (int i = 0; i < toTable.size(); i++) {
-
+/**
+ * Unfortunately I didn't found solution to сombine for each & stream
+ */
 
             statusTable.put(i, "collection_id", ((DocumentInfo) toTable.get(i)).collection_id);
             statusTable.put(i, "created_date", ((DocumentInfo) toTable.get(i)).created_date);

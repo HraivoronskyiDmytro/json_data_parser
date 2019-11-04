@@ -1,3 +1,7 @@
+/**
+ * This is POJO for JSON to JAVA object convertation
+ */
+
 public class DocumentInfo {
 
     public String document_id;
