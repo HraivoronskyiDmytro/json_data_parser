@@ -88,14 +88,7 @@ public class parser {
     }
 
 
-    public static void main(String[] args)   {
 
-        getStatuses();
-        getDataByStatus("MIGRATED");
-        getDataByFileName("64.pdf");
-        System.out.println("igogo");
-
-    }
 }
 
 
